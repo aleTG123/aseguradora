@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux'
+import faker from 'faker'
 
-const policies = ( listPolicies= [], action ) => {
+/* let listPolicies = [
+    {id: faker.random.uuid(), nombre: 'Alejandro', monto: 500}
+]; */
+
+const policies = ( listPolicies = [], action ) => {
     
     switch(action.type){
         case 'CREATE_POLICY':

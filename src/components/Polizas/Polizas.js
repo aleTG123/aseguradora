@@ -10,11 +10,11 @@ import ListadoPolizas from '../ListadoPolizas/ListadoPolizas'
 
 const Polizas = ( {polizas, agregarPolizas, botones} ) => {
     
-    const [poliza, guardarPoliza] = useState({
+  /*   const [poliza, guardarPoliza] = useState({
         id: faker.random.uuid(),
         nombre: '',
         monto: 0
-    });
+    }); */
 
 
     return(
@@ -24,13 +24,20 @@ const Polizas = ( {polizas, agregarPolizas, botones} ) => {
                     (botones.addPolizas) ?
                         (
                             <React.Fragment>
-                                <Col md="6">
+                                {/* <Col md="6">
                                     <h2 className="text-center">Agregar Poliza</h2>
                                     <Formulario 
                                             elementos= {polizas}
                                             agregarElementos={agregarPolizas}
                                             elemento= {poliza}
                                             guardarElemento= {guardarPoliza}
+                                    />
+                                </Col> */}
+                                <Col md="6">
+                                    <h2 className="text-center">Agregar Poliza</h2>
+                                    <Formulario 
+                                            elementos= {polizas}
+                                            agregarElementos={agregarPolizas}
                                     />
                                 </Col>
                                 <Col md="5">

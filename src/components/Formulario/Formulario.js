@@ -3,36 +3,31 @@ import faker from 'faker'
 
 import { Form, Button, Col, Row} from 'react-bootstrap'
 
-const Formulario = ( {elementos, agregarElementos, elemento, guardarElemento} ) => {
+//const Formulario = ( {elementos, agregarElementos, elemento, guardarElemento} ) => {
+const Formulario = ( {elementos, agregarElementos} ) => {
 
+    let elemento = {
+        [e.target.name]: e.target.value
+    };
     
     const onChangeText = (e) => {
-
-        guardarElemento({
+        console.log("si detecta el evento")
+        elemento = {
             ...elemento,
-            //id: faker.random.uuid(),
             [e.target.name]: e.target.value
-        });
+        }
+
+        console.log(elemento)
         
     }
 
     const submit = e => {
         e.preventDefault();
+
+        elemento.id = faker.random.uuid();
         
-        agregarElementos([
-            ...elementos,
-            elemento
-        ]);
+        agregarElementos( elemento );
 
-        guardarElemento({
-            id: faker.random.uuid(),
-            nombre: '',
-            monto: 0
-        })
-
-
-
-        
 
     }
     

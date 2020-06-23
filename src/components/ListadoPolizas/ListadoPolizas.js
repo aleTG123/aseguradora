@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Poliza from '../Poliza/Poliza'
-import { createPolicy } from '../../actions/actions'
+
 
 
 const ListadoPolizas = ({polizas, agregarPolizas }) => {
@@ -26,15 +25,4 @@ const ListadoPolizas = ({polizas, agregarPolizas }) => {
     );
 }
 
-//export default ListadoPolizas
-
-
-const mapStateToProps = (state) => {
-    return {
-        polizas: state.policies
-    }
-}
-
-
-
-export default connect(mapStateToProps, {createPolicy})(ListadoPolizas)
+export default ListadoPolizas

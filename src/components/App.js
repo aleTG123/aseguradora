@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import faker from 'faker'
 
+import { connect } from 'react-redux';
+import { Button, Row, Container, Col } from 'react-bootstrap'
+
+
+import { createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy } from '../actions/actions'
 import Polizas from './Polizas/Polizas'
 import Reclamos from './Reclamos/Reclamos'
-
-import { Button, Row, Container, Col } from 'react-bootstrap'
 import Finanzas from './Finanzas/Finanzas';
 
-const App = () => {
-
-    const [ polizas, agregarPolizas ] = useState([
+const App = ( props ) => {
+    
+    const {polizas, reclamos, finanzas, createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy} = props;
+ /*    const [ polizas, agregarPolizas ] = useState([
         {id: faker.random.uuid(), nombre: 'Alex', monto: 50}
-    ]);
+    ]); */
 
 
-    const [ reclamos, agregarReclamos ] = useState([
+ /*    const [ reclamos, agregarReclamos ] = useState([
         {id: faker.random.uuid(), nombre: 'Alex', monto: 50}
-    ]);
+    ]); */
 
 
     const [ botones, cambiarBoton ] = useState({});
@@ -69,13 +72,13 @@ const App = () => {
                 
                     <Polizas 
                         polizas={polizas}
-                        agregarPolizas={agregarPolizas}
+                        agregarPolizas={createPolicy}
                         botones={botones}
                     />
 
                     <Reclamos 
                         reclamos={reclamos}
-                        agregarReclamos={agregarReclamos}
+                        agregarReclamos={claimPolicy}
                         botones={botones}
                     />
 
@@ -92,6 +95,17 @@ const App = () => {
             
 
      );
+} 
+
+const mapStateToProps = (state) => {
+    return {
+        polizas: state.policies,
+        reclamos: state.claimHistory,
+        finanzas: state.totalAmount
+
+    }
 }
- 
-export default App;
+
+
+
+export default connect(mapStateToProps, {createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy})(App)

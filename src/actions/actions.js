@@ -7,7 +7,7 @@ export const createPolicy = ( {id, nombre, monto} ) => {
         payload: {
             id: id,
             nombre: nombre,
-            monto: monto
+            monto: Number(monto)
         }
     }
 
@@ -20,7 +20,7 @@ export const deletePolicy = ( {id, monto} ) => {
         type: 'DELETE_POLICY',
         payload: {
             id: id,
-            monto: monto
+            monto: Number(monto)
         }
     }
 
@@ -36,7 +36,7 @@ export const claimPolicy = ( {id, nombre, monto} ) => {
         payload: {
             id: id,
             nombre: nombre,
-            monto: monto
+            monto: Number(monto)
         }
 
     }
@@ -50,7 +50,7 @@ export const deleteClaimPolicy = ( {id, monto} ) => {
         type: 'DELETE_CLAIM',
         payload: {
             id: id,
-            monto: monto
+            monto: Number(monto)
         }
     }
 

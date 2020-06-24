@@ -1,5 +1,14 @@
 import { combineReducers } from 'redux'
 
+
+const initPolicies = [
+    { id: 1, nombre: 'Alejandro', monto: 50 }
+];
+
+
+
+
+
 const policies = ( listPolicies = [], action ) => {
     
     switch(action.type){
@@ -17,20 +26,16 @@ const policies = ( listPolicies = [], action ) => {
 
 
 const bank = ( totalAmount= 0, action ) => {
-    let newAmount = 0
+
     switch( action.type ){
         case 'CREATE_POLICY':
-             //newAmount = totalAmount + action.payload.monto;
-            return (totalAmount += action.payload.monto);
+            return totalAmount + action.payload.monto;
         case 'CREATE_CLAIM':
-             newAmount = totalAmount - action.payload.monto;
-            return newAmount;
+            return totalAmount - action.payload.monto;
         case 'DELETE_POLICY':
-             newAmount = totalAmount - action.payload.monto;
-            return newAmount;
+            return totalAmount - action.payload.monto;
         case 'DELETE_CLAIM':
-             newAmount = totalAmount + action.payload.monto;
-            return newAmount;
+            return totalAmount + action.payload.monto;
         default:
             return totalAmount
     }

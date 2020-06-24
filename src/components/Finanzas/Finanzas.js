@@ -16,7 +16,7 @@ const Finanzas = ( {finanzas, botones} ) => {
                     )
                 :
                     (
-                        <div></div>
+                        null
                     )
             }
             

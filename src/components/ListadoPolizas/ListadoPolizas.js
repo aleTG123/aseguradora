@@ -2,9 +2,7 @@ import React from 'react';
 
 import Poliza from '../Poliza/Poliza'
 
-
-
-const ListadoPolizas = ({polizas, agregarPolizas }) => {
+const ListadoPolizas = ({polizas, borrarElemento }) => {
     return ( 
         <React.Fragment>
             {
@@ -13,8 +11,7 @@ const ListadoPolizas = ({polizas, agregarPolizas }) => {
                         <Poliza 
                             key= { poliza.id }
                             poliza={poliza}
-                            polizas={polizas}
-                            agregarPolizas={agregarPolizas}
+                            borrarElemento={borrarElemento}
                         />
                     )
                 })

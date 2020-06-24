@@ -3,31 +3,29 @@ import faker from 'faker'
 
 import { Form, Button, Col, Row} from 'react-bootstrap'
 
-//const Formulario = ( {elementos, agregarElementos, elemento, guardarElemento} ) => {
-const Formulario = ( {elementos, agregarElementos} ) => {
+const Formulario = ( {agregarElementos} ) => {
 
-    let elemento = {
-        [e.target.name]: e.target.value
-    };
+
+
+    const nombreRef = React.createRef();
+    const montoRef = React.createRef();
     
-    const onChangeText = (e) => {
-        console.log("si detecta el evento")
-        elemento = {
-            ...elemento,
-            [e.target.name]: e.target.value
-        }
-
-        console.log(elemento)
-        
-    }
 
     const submit = e => {
         e.preventDefault();
 
-        elemento.id = faker.random.uuid();
+        
+
+        let elemento = {
+            id : faker.random.uuid(),
+            nombre : nombreRef.current.value,
+            monto: montoRef.current.value
+        }
         
         agregarElementos( elemento );
 
+        nombreRef.current.value = '';
+        montoRef.current.value = null;
 
     }
     
@@ -43,8 +41,8 @@ const Formulario = ( {elementos, agregarElementos} ) => {
                             type="text" 
                             placeholder="Nombre"
                             name="nombre"
-                            value={elemento.nombre}
-                            onChange={ (e) => onChangeText(e) }
+                            ref={ nombreRef }
+                            required
                     />
                 </Col>
             </Form.Group>
@@ -58,8 +56,8 @@ const Formulario = ( {elementos, agregarElementos} ) => {
                             type="number" 
                             placeholder="Monto"
                             name="monto"
-                            value={elemento.monto}
-                            onChange={ (e) => onChangeText(e) } 
+                            ref={ montoRef }
+                            required
                     />
                 </Col>
             </Form.Group>

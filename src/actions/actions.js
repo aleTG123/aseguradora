@@ -45,7 +45,7 @@ export const claimPolicy = ( {id, nombre, monto} ) => {
 
 
 export const deleteClaimPolicy = ( {id, monto} ) => {
-
+    
     return {
         type: 'DELETE_CLAIM',
         payload: {

@@ -3,15 +3,7 @@ import React from 'react';
 import { Button, Row, Col } from 'react-bootstrap'
 
 
-const Poliza = ( {poliza, polizas, agregarPolizas} ) => {
-
-    const eliminarPoliza = ( id ) => {
-        const newPolizas = polizas.filter( poliza => poliza.id !== id )
-
-        agregarPolizas(newPolizas)
-    }
-
-
+const Poliza = ( {poliza, borrarElemento} ) => {
 
     return(
         
@@ -19,8 +11,9 @@ const Poliza = ( {poliza, polizas, agregarPolizas} ) => {
             <Row>
                 
                 {
-                    agregarPolizas?
-                        (   <React.Fragment>
+                    borrarElemento?
+                        (   
+                            <React.Fragment>
                                 <Col sm="9">
                                     <h5>{ poliza.nombre }</h5>
                                     <p>${ poliza.monto }</p>
@@ -29,7 +22,7 @@ const Poliza = ( {poliza, polizas, agregarPolizas} ) => {
                                         <Button
                                             variant="danger" 
                                             size="sm"
-                                            onClick={() => eliminarPoliza(poliza.id)}
+                                            onClick={() => borrarElemento(poliza)}
 
                                         >Eliminar</Button>
                                     

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Reclamo from '../Reclamo/Reclamo'
 
-const ListadoReclamos = ({ reclamos, agregarReclamos }) => {
+const ListadoReclamos = ({ reclamos, borrarElemento }) => {
     return ( 
         <React.Fragment>
             {
@@ -11,8 +11,7 @@ const ListadoReclamos = ({ reclamos, agregarReclamos }) => {
                         <Reclamo 
                             key= { reclamo.id }
                             reclamo={reclamo}
-                            reclamos={reclamos}
-                            agregarReclamos={agregarReclamos}
+                            borrarElemento={borrarElemento}
                         />
                     )
                 })

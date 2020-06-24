@@ -1,22 +1,14 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'
 
-const Reclamo = ( {reclamo, reclamos, agregarReclamos} ) => {
-    
-    const eliminarReclamo = (id) => {
-        const newReclamos = reclamos.filter( reclamo => reclamo.id !== id )
-
-        agregarReclamos(newReclamos)
-    }
-    
-    
+const Reclamo = ( {reclamo, borrarElemento} ) => {
     
     return ( 
         <React.Fragment>
             <Row>
 
                 {
-                    agregarReclamos?
+                    borrarElemento?
                         (   
                             <React.Fragment>
                                 <Col sm="9">
@@ -27,7 +19,7 @@ const Reclamo = ( {reclamo, reclamos, agregarReclamos} ) => {
                                     <Button 
                                         variant="danger" 
                                         size="sm"
-                                        onClick={() => eliminarReclamo(reclamo.id)}
+                                        onClick={() => borrarElemento(reclamo)}
                 
                                     >Eliminar</Button>
                                 </Col>            

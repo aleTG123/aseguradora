@@ -4,23 +4,14 @@ import { connect } from 'react-redux';
 import { Button, Row, Container, Col } from 'react-bootstrap'
 
 
-import { createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy } from '../actions/actions'
+import { createPolicy, claimPolicy, deleteClaimPolicy } from '../actions/actions'
 import Polizas from './Polizas/Polizas'
 import Reclamos from './Reclamos/Reclamos'
 import Finanzas from './Finanzas/Finanzas';
 
 const App = ( props ) => {
     
-    const {polizas, reclamos, finanzas, createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy} = props;
- /*    const [ polizas, agregarPolizas ] = useState([
-        {id: faker.random.uuid(), nombre: 'Alex', monto: 50}
-    ]); */
-
-
- /*    const [ reclamos, agregarReclamos ] = useState([
-        {id: faker.random.uuid(), nombre: 'Alex', monto: 50}
-    ]); */
-
+    const {polizas, reclamos, createPolicy, claimPolicy, deleteClaimPolicy, finanzas} = props;
 
     const [ botones, cambiarBoton ] = useState({});
 
@@ -79,10 +70,12 @@ const App = ( props ) => {
                     <Reclamos 
                         reclamos={reclamos}
                         agregarReclamos={claimPolicy}
+                        borrarReclamo={ deleteClaimPolicy }
                         botones={botones}
                     />
 
                     <Finanzas 
+                        finanzas={finanzas}
                         botones={botones}
                     />
                 
@@ -108,4 +101,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {createPolicy, deletePolicy, claimPolicy, deleteClaimPolicy})(App)
+export default connect(mapStateToProps, {createPolicy, claimPolicy, deleteClaimPolicy})(App)

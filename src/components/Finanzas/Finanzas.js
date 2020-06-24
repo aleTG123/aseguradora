@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Col} from 'react-bootstrap';
 
-const Finanzas = ( {botones} ) => {
+const Finanzas = ( {finanzas, botones} ) => {
     return ( 
         <React.Fragment>
 
@@ -11,7 +11,7 @@ const Finanzas = ( {botones} ) => {
                     (
                         <Col className="text-center">
                             <h3>Fondo Total</h3>
-                            <p>${ 0.0 }</p>
+                            <p>${ finanzas }</p>
                         </Col>
                     )
                 :

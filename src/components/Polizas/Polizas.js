@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col } from 'react-bootstrap'
-import faker from 'faker'
+import { connect } from 'react-redux';
 
+import { deletePolicy } from '../../actions/actions'
 import Formulario from '../Formulario/Formulario'
 import ListadoPolizas from '../ListadoPolizas/ListadoPolizas'
 
-
-
-
-const Polizas = ( {polizas, agregarPolizas, botones} ) => {
+const Polizas = ( {polizas, agregarPolizas, deletePolicy, botones} ) => {
     
-  /*   const [poliza, guardarPoliza] = useState({
-        id: faker.random.uuid(),
-        nombre: '',
-        monto: 0
-    }); */
-
-
     return(
         <React.Fragment>
 
@@ -24,19 +15,9 @@ const Polizas = ( {polizas, agregarPolizas, botones} ) => {
                     (botones.addPolizas) ?
                         (
                             <React.Fragment>
-                                {/* <Col md="6">
-                                    <h2 className="text-center">Agregar Poliza</h2>
-                                    <Formulario 
-                                            elementos= {polizas}
-                                            agregarElementos={agregarPolizas}
-                                            elemento= {poliza}
-                                            guardarElemento= {guardarPoliza}
-                                    />
-                                </Col> */}
                                 <Col md="6">
                                     <h2 className="text-center">Agregar Poliza</h2>
                                     <Formulario 
-                                            elementos= {polizas}
                                             agregarElementos={agregarPolizas}
                                     />
                                 </Col>
@@ -44,8 +25,8 @@ const Polizas = ( {polizas, agregarPolizas, botones} ) => {
                                     <h2 className="text-center">Lista de polizas</h2>
                                     <div className="mt-4">
                                         <ListadoPolizas 
-                                            polizas= {polizas}
-                                            agregarPolizas={agregarPolizas}
+                                            polizas= { polizas }
+                                            borrarElemento={ deletePolicy }
                                         />                                        
                                     </div>
                                                         
@@ -71,7 +52,7 @@ const Polizas = ( {polizas, agregarPolizas, botones} ) => {
                             )                            
                         :
                             (
-                                <div></div>
+                                null
                             )
                 }
 
@@ -80,4 +61,5 @@ const Polizas = ( {polizas, agregarPolizas, botones} ) => {
     );
 }
 
-export default Polizas;
+
+export default connect(null, { deletePolicy })(Polizas)
